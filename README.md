@@ -1,6 +1,8 @@
 
 # swagger-endpoint-validator
 
+[![CircleCI](https://circleci.com/gh/guidesmiths/swagger-endpoint-validator.svg?style=svg)](https://circleci.com/gh/guidesmiths/swagger-endpoint-validator)
+
 A validator of API endpoints to check that input and/or output match with the swagger specification for the API.
 
 This is based on [express-swagger-generator](https://www.npmjs.com/package/express-swagger-generator), so it is important that each endpoints is properly documented so that the library can do the validation.
