@@ -1,5 +1,6 @@
 const expressSwaggerGenerator = require('express-swagger-generator');
 const validator = require('swagger-model-validator');
+const swaggerJSDoc = require('swagger-jsdoc');
 
 const errorFactory = require('./lib/errors');
 
@@ -7,10 +8,42 @@ const swaggerValidatorError = errorFactory('swagger_validator');
 
 let singleton = null;
 
-const createInstance = (app, options) => {
-	const swaggerInstance = expressSwaggerGenerator(app)(options);
-	validator(swaggerInstance); // add swagger-model-validator
-	return swaggerInstance;
+const createInstance = (app, swaggerOptions, format) => {
+	const instance = {
+		jsdoc: () => {
+			const { swaggerDefinition, ...rest } = swaggerOptions;
+			// Options has to be built this way to avoid "TypeError: Cannot add property swagger, object is not extensible"
+			const options = {
+				swaggerDefinition: {
+					...swaggerOptions.swaggerDefinition,
+				},
+				...rest,
+			};
+
+			const swaggerInstance = expressSwaggerGenerator(app)(options);
+			validator(swaggerInstance);
+			return swaggerInstance;
+		},
+		yaml: () => {
+			const { swaggerDefinition, ...rest } = swaggerOptions;
+
+			// Options for the swagger docs
+			const options = {
+				// Import swaggerDefinitions
+				swaggerDefinition,
+				// Path to the API docs
+				// Note that this path is relative to the current directory from which the Node.js is ran, not the application itself.
+				...rest,
+			};
+
+			// Initialize swagger-jsdoc -> returns validated swagger spec in json format
+			const swaggerSpec = swaggerJSDoc(options);
+			const swaggerInstance = validator(swaggerSpec);
+			return swaggerInstance.swagger;
+		},
+	};
+
+	return instance[format]();
 };
 
 const validate = (payload, request, isInput) => {
@@ -55,17 +88,13 @@ const validate = (payload, request, isInput) => {
 };
 
 module.exports = {
-	init: (app, swaggerOptions) => {
+	init: (app, swaggerOptions, format = 'jsdoc') => {
+		if (!['jsdoc', 'yaml'].includes(format)) {
+			throw swaggerValidatorError(`${format} format not supported`);
+		}
+
 		if (!singleton) {
-			const { swaggerDefinition, ...rest } = swaggerOptions;
-			// Options has to be built this way to avoid "TypeError: Cannot add property swagger, object is not extensible"
-			const options = {
-				swaggerDefinition: {
-					...swaggerOptions.swaggerDefinition,
-				},
-				...rest,
-			};
-			singleton = createInstance(app, options);
+			singleton = createInstance(app, swaggerOptions, format);
 		}
 	},
 	reset: () => {
