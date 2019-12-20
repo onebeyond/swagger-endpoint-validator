@@ -24,7 +24,8 @@
   "homepage": "https://github.com/guidesmiths/swagger-endpoint-validator#readme",
   "dependencies": {
     "express-swagger-generator": "^1.1.15",
-    "swagger-model-validator": "^3.0.11"
+    "swagger-jsdoc": "^3.5.0",
+    "swagger-model-validator": "^3.0.12"
   },
   "devDependencies": {
     "eslint": "^6.2.1",

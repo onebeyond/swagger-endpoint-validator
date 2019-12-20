@@ -1,21 +1,21 @@
-const initValidator = require('..'); // diferent instance
+const validator = require('../..'); // diferent instance
 
 describe('init method', () => {
 	it('should return an exeception when we don\'t send options or the app instance', () => {
 		expect(() => {
-			initValidator.init();
+			validator.init();
 		}).toThrow();
 	});
 
 	it('should return an exeception when we don\'t send params to validateAPIInput', () => {
 		expect(() => {
-			initValidator.validateAPIInput();
+			validator.validateAPIInput();
 		}).toThrow();
 	});
 
-	it('should return an exeception when we don\'t send params to validateAPIInput', () => {
+	it('should return an exeception when we don\'t send params to validateAPIOutput', () => {
 		expect(() => {
-			initValidator.validateAPIOutput();
+			validator.validateAPIOutput();
 		}).toThrow();
 	});
 });
