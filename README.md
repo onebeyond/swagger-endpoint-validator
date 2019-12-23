@@ -70,9 +70,9 @@ where:
   - `input` is the payload to be validated.
   - `request` is request object.
 
-It will use the configuration used in the initializationto look for the endpoint and the schema to validate.
+It will use the configuration used in the initialization to look for the endpoint and the schema to validate.
 
-**Example**
+**JSDOC Example**
 
 ```js
 /**
@@ -104,6 +104,38 @@ app.get('/test-invalid-input', (req, res) => {
 });
 ```
 
+**YAML Example**
+
+```js
+/**
+ * @swagger
+ * /test-invalid-input:
+ *   post:
+ *     description: Test POST /test-invalid-input
+ *     tags: [Test]
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: body
+ *         description: Input payload
+ *         required: true
+ *         type: object
+ *         schema:
+ *         - $ref: '#/definitions/Input'
+ *     responses:
+ *       200:
+ *         description: successful operation
+ */
+app.post('/test-invalid-input', (req, res) => {
+  try {
+    const result = validator.validateAPIInput({}, req);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ error });
+  }
+});
+```
+
 ### validateAPIOutput(output: Object, request: RequestObject)
 
 ```js
@@ -115,9 +147,9 @@ where:
   - `output` is the payload to be validated.
   - `request` is request object.
 
-It will use the configuration used in the initializationto look for the endpoint and the schema to validate.
+It will use the configuration used in the initialization to look for the endpoint and the schema to validate.
 
-**Example**
+**JSDOC Example**
 
 ```js
 /**
@@ -151,8 +183,36 @@ app.get('/test-invalid-output', (req, res) => {
 });
 ```
 
+**YAML Example**
+
+```js
+/**
+ * @swagger
+ * /test-invalid-output:
+ *   get:
+ *     description: Test GET /test-invalid-output
+ *     tags: [Test]
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: successful operation
+ *         schema:
+ *           $ref: '#/definitions/Output'
+ */
+app.get('/test-invalid-output', (req, res) => {
+  try {
+    const result = validator.validateAPIOutput({}, req);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ error });
+  }
+});
+```
 
 ### Example of a valid request with the validator
+
+**JSDOC**
 
 ```js
 /**
@@ -181,5 +241,73 @@ app.get('/test-valid', (req, res) => {
   validator.validateAPIInput(validInputModel, req);
   validator.validateAPIOutput(validOutputModel, req);
   res.status(200).json({ success: true });
+});
+```
+
+**YAML**
+
+```js
+/**
+ * @swagger
+ * /test-valid-input:
+ *   post:
+ *     description: Test POST /test-valid-input
+ *     tags: [Test]
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: body
+ *         description: Input payload
+ *         required: true
+ *         type: object
+ *         schema:
+ *         - $ref: '#/definitions/Input'
+ *     responses:
+ *       200:
+ *         description: successful operation
+ */
+app.post('/test-valid-input', (req, res) => {
+  const validInputModel = { name: 'Name is required' };
+
+  try {
+    const result = validator.validateAPIInput(validInputModel, req);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ error });
+  }
+});
+
+/**
+ * @swagger
+ * /test-valid-output:
+ *   get:
+ *     description: Test GET /test-valid-output
+ *     tags: [Test]
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: body
+ *         description: Input payload
+ *         required: true
+ *         type: object
+ *         schema:
+ *         - $ref: '#/definitions/Input'
+ *     responses:
+ *       200:
+ *         description: successful operation
+ *         schema:
+ *           $ref: '#/definitions/Output'
+ */
+app.get('/test-valid-output', (req, res) => {
+  const validInputModel = { name: 'Name is required' };
+  const validOutputModel = { name: 'Name is required', result: 'Valid result' };
+
+  try {
+      validator.validateAPIInput(validInputModel, req);
+    const result = validator.validateAPIOutput(validOutputModel, req);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ error });
+  }
 });
 ```
