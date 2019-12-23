@@ -69,9 +69,10 @@ const validate = (payload, request, isInput) => {
 		const pathMethod = path[method.toLowerCase()];
 
 		if (pathMethod) {
-			const schemaToValidate = isInput
+			let schemaToValidate = isInput
 				? pathMethod.parameters.find(item => item.name === 'body').schema
 				: pathMethod.responses['200'].schema;
+			schemaToValidate = schemaToValidate[0] ? schemaToValidate[0] : schemaToValidate;
 			const validation = singleton.validateModel(schemaToValidate, payload, false, true);
 
 			if (!validation.valid) {
