@@ -16,15 +16,16 @@ npm install --save swagger-endpoint-validator
 
 ## Methods
 
-### init(app: ExpressApp, validatorOptions: ConfigFile)
+### init(app: ExpressApp, validatorOptions: ConfigFile, format: String)
 
 ```js
-validator.init(app, validatorOptions);
+validator.init(app, validatorOptions, format);
 ```
 
 where:
 
   - `app` is the Express app instance.
+  - `format` is an string to choose the format we want to create the swagger docs, jsdoc or yaml. Default jsdoc.
   - `validatorOptions` is a configuration object like this: 
 
 ```js
@@ -182,5 +183,3 @@ app.get('/test-valid', (req, res) => {
   res.status(200).json({ success: true });
 });
 ```
-
-
