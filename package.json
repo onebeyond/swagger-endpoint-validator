@@ -25,7 +25,8 @@
   "dependencies": {
     "express-swagger-generator": "^1.1.15",
     "swagger-jsdoc": "^3.5.0",
-    "swagger-model-validator": "^3.0.12"
+    "swagger-model-validator": "^3.0.12",
+    "swagger-ui-express": "^4.1.2"
   },
   "devDependencies": {
     "eslint": "^6.2.1",
