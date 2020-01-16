@@ -1,6 +1,7 @@
 const expressSwaggerGenerator = require('express-swagger-generator');
 const validator = require('swagger-model-validator');
 const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 const errorFactory = require('./lib/errors');
 
@@ -31,14 +32,18 @@ const createInstance = (app, swaggerOptions, format) => {
 			const options = {
 				// Import swaggerDefinitions
 				swaggerDefinition,
-				// Path to the API docs
-				// Note that this path is relative to the current directory from which the Node.js is ran, not the application itself.
 				...rest,
 			};
 
 			// Initialize swagger-jsdoc -> returns validated swagger spec in json format
 			const swaggerSpec = swaggerJSDoc(options);
 			const swaggerInstance = validator(swaggerSpec);
+
+			// If a URL is included in the configuration, serve the API doc through it
+			if (rest.url) {
+				app.use(rest.url, swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+			}
+
 			return swaggerInstance.swagger;
 		},
 	};

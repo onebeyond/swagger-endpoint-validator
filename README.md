@@ -25,8 +25,10 @@ validator.init(app, validatorOptions, format);
 where:
 
   - `app` is the Express app instance.
-  - `format` is an string to choose the format we want to create the swagger docs, jsdoc or yaml. Default jsdoc.
-  - `validatorOptions` is a configuration object like this: 
+  - `format` is an string to choose the format we want to create the swagger docs: `jsdoc` or `yaml`. Default `jsdoc`.
+  - `validatorOptions` is a configuration object that has different format depending on `format`:
+
+**`validatorOptions` for _jsdoc_**
 
 ```js
 const validatorOptions = {
@@ -56,6 +58,24 @@ const validatorOptions = {
     url: '/test/docs/api',
     docs: '/test/docs/api.json',
   },
+};
+```
+
+**`validatorOptions` for _yaml_**
+
+```js
+const validatorOptions = {
+  swaggerDefinition: {
+    info: {
+      description: 'Documentation for Service API',
+      title: 'Service API',
+      version: '1.0.0',
+      contact: { email: 'your_email@guidesmiths.com' },
+    },
+    basePath: '/',
+  },
+  apis: ['./test/**/**.js'], // paths to the API files
+  url: '/test/docs/api', // optional path to serve the API documentation
 };
 ```
 
