@@ -8,7 +8,22 @@ const errorFactory = require('./lib/errors');
 const swaggerValidatorError = errorFactory('swagger_validator');
 
 let singleton = null;
+let paths = null;
 
+/**
+ * Replaces :<string> by {string}.
+ * @param {string} pathStr - string to replace.
+ * @returns Replaced string.
+ */
+const formatPath = pathStr => pathStr.replace(/{/g, ':').replace(/}/g, '');
+
+/**
+ * Creates the validator singleton instance.
+ * @param {object} app - Express application object.
+ * @param {object} swaggerOptions - Swagger options.
+ * @param {string} format - One of: 'jsdoc' or 'yaml'.
+ * @returns Validator singleton instance initialized.
+ */
 const createInstance = (app, swaggerOptions, format) => {
 	const instance = {
 		jsdoc: () => {
@@ -51,6 +66,13 @@ const createInstance = (app, swaggerOptions, format) => {
 	return instance[format]();
 };
 
+/**
+ * Validates the payload for a specific endpoint.
+ * @param {object} payload - Payload to be validated.
+ * @param {object} request - Express request object.
+ * @param {boolean} isInput - true if it's an input payload for the endpoint, false otherwise.
+ * @throws {swaggerValidatorError} Swagger validator error.
+ */
 const validate = (payload, request, isInput) => {
 	if (!singleton) {
 		throw swaggerValidatorError('Swagger not initialized!');
@@ -62,12 +84,6 @@ const validate = (payload, request, isInput) => {
 
 	const { method } = request;
 	const { path: routePath } = request.route;
-
-	const formatPath = pathStr => pathStr.replace(/{/g, ':').replace(/}/g, ''); // Replace :<string> by {string} in path
-
-	const paths = Object.keys(singleton.paths).reduce((acum, item) => (
-		{ ...acum, [formatPath(item)]: singleton.paths[item] }
-	), {});
 	const path = paths[routePath];
 
 	if (path) {
@@ -93,19 +109,50 @@ const validate = (payload, request, isInput) => {
 	throw swaggerValidatorError('payload data not valid for validation.');
 };
 
-module.exports = {
-	init: (app, swaggerOptions, format = 'jsdoc') => {
-		if (!['jsdoc', 'yaml'].includes(format)) {
-			throw swaggerValidatorError(`${format} format not supported`);
-		}
+/**
+ * Initializes the validator.
+ * @param {*} app - Express application object.
+ * @param {*} swaggerOptions - Swagger options.
+ * @param {*} format  - One of: 'jsdoc' or 'yaml'.
+ */
+const init = (app, swaggerOptions, format = 'jsdoc') => {
+	if (!['jsdoc', 'yaml'].includes(format)) {
+		throw swaggerValidatorError(`${format} format not supported`);
+	}
 
-		if (!singleton) {
-			singleton = createInstance(app, swaggerOptions, format);
-		}
-	},
-	reset: () => {
-		singleton = null;
-	},
-	validateAPIInput: (payload, request) => validate(payload, request, true),
-	validateAPIOutput: (payload, request) => validate(payload, request, false),
+	if (!singleton) {
+		singleton = createInstance(app, swaggerOptions, format);
+
+		paths = Object.keys(singleton.paths).reduce((acum, item) => (
+			{ ...acum, [formatPath(item)]: singleton.paths[item] }
+		), {});
+	}
+};
+
+/**
+ * Resets the validator.
+ */
+const reset = () => {
+	singleton = null;
+};
+
+/**
+ * Validates a payload used as input body to a REST endpoint.
+ * @param {object} payload - Payload to be validated.
+ * @param {object} request - Express request object details.
+ */
+const validateAPIInput = (payload, request) => validate(payload, request, true);
+
+/**
+ * Validates a payload returned by a REST endpoint.
+ * @param {object} payload - Payload to be validated.
+ * @param {object} request - Express request object details.
+ */
+const validateAPIOutput = (payload, request) => validate(payload, request, false);
+
+module.exports = {
+	init,
+	reset,
+	validateAPIInput,
+	validateAPIOutput,
 };

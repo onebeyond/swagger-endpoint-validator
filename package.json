@@ -23,19 +23,19 @@
   },
   "homepage": "https://github.com/guidesmiths/swagger-endpoint-validator#readme",
   "dependencies": {
-    "express-swagger-generator": "^1.1.15",
+    "express-swagger-generator": "^1.1.17",
     "swagger-jsdoc": "^3.5.0",
-    "swagger-model-validator": "^3.0.12",
-    "swagger-ui-express": "^4.1.2"
+    "swagger-model-validator": "^3.0.16",
+    "swagger-ui-express": "^4.1.3"
   },
   "devDependencies": {
-    "eslint": "^6.2.1",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.15.2",
-    "husky": "^3.0.4",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-jest": "^23.6.0",
+    "husky": "^4.0.10",
     "jest": "^24.9.0",
-    "jest-junit": "^9.0.0",
+    "jest-junit": "^10.0.0",
     "mock-express": "^1.3.0"
   },
   "jest-junit": {
