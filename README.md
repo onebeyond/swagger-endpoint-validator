@@ -2,7 +2,6 @@
 # swagger-endpoint-validator
 
 ![npm](https://img.shields.io/npm/v/swagger-endpoint-validator)
-[![CircleCI](https://circleci.com/gh/guidesmiths/swagger-endpoint-validator.svg?style=svg)](https://circleci.com/gh/guidesmiths/swagger-endpoint-validator)
 
 A validator of API endpoints to check that input and/or output match with the swagger specification for the API.
 
