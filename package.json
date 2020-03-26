@@ -1,11 +1,17 @@
 {
   "name": "swagger-endpoint-validator",
-  "version": "1.1.5",
+  "version": "2.0.0",
   "description": "A validator of API endpoints to check that input and output match with the swagger specification for the API",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "lint": "eslint ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test",
+      "pre-push": "npm run test"
+    }
   },
   "repository": {
     "type": "git",
@@ -23,7 +29,11 @@
   },
   "homepage": "https://github.com/guidesmiths/swagger-endpoint-validator#readme",
   "dependencies": {
+    "debug": "^4.1.1",
+    "express-openapi-validator": "^3.10.0",
     "express-swagger-generator": "^1.1.17",
+    "js-yaml": "^3.13.1",
+    "openapi-enforcer": "^1.10.1",
     "swagger-jsdoc": "^4.0.0",
     "swagger-model-validator": "^3.0.18",
     "swagger-ui-express": "^4.1.4"
