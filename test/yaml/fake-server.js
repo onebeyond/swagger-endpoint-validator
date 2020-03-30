@@ -27,7 +27,9 @@ const runServer = async () => {
 	app.use(bodyParser.json());
 
 	await validator.init(app, {
-		yamlFile: './test/yaml/api.yaml',
+		yaml: {
+			file: './test/yaml/api.yaml',
+		},
 		validationEndpoint: '/test',
 		validateRequests: true,
 		validateResponses: true,

@@ -4,7 +4,7 @@ const { runServer } = require('./fake-server');
 
 let app;
 
-describe('validation results', () => {
+describe.skip('validation results', () => {
 	beforeAll(async () => {
 		app = await runServer();
 	});

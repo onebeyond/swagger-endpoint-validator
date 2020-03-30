@@ -14,7 +14,8 @@ const validator = require('./lib/validator');
  * @param {boolean} [options.validateResponses=true] - true to validate the responses.
  * @param {string} [options.validationEndpoint=null] - endpoint to do schemas validation agains the OpenAPI schema.
  * @param {string} [options.format=yaml] - format of the OpenAPI specification documentation.
- * @param {string} [options.yamlFile=null] - When format = 'yaml', path of the yaml file containing the OpenAPI specification.
+ * @param {Object} [options.yaml={}] - Extra configuration when format = 'yaml'.
+ * @param {Object} [options.yaml.file=null] - path of the yaml file containing the OpenAPI specification.
  */
 const init = async (app, options) => {
 	debug('Initializing middleware for this express app...');
