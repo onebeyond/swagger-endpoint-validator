@@ -20,7 +20,7 @@ const init = async (app, options) => {
 	debug('Initializing middleware for this express app...');
 
 	const normalizedOptions = normalizeOptions(options);
-	const spec = openAPISpecification.generate(normalizedOptions);
+	const spec = await openAPISpecification.generate(normalizedOptions);
 	await validator.init(app, normalizedOptions, spec);
 	validationEndpoint.add(app, normalizedOptions);
 	customErrorHandler.add(app);
