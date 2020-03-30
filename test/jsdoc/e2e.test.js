@@ -4,7 +4,7 @@ const { runServer } = require('./fake-server');
 
 let app;
 
-describe.skip('validation results', () => {
+describe('validation results', () => {
 	beforeAll(async () => {
 		app = await runServer();
 	});
@@ -43,7 +43,8 @@ describe.skip('validation results', () => {
 				.toEqual('Unknown query parameter \'invalidQueryParam\'');
 		});
 
-		test('should return a bad request error (400) when GET request query params are not valid', async () => {
+		// TODO: it's not possible to do query params values validation with JSDoc
+		test.skip('should return a bad request error (400) when GET request query params are not valid', async () => {
 			const res = await request(app)
 				.get('/pets?limit=0');
 			expect(res.statusCode)

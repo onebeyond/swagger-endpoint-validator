@@ -27,12 +27,34 @@ const runServer = async () => {
 	app.use(bodyParser.json());
 
 	await validator.init(app, {
-		yaml: {
-			file: './test/yaml/api.yaml',
-		},
 		validationEndpoint: '/test',
 		validateRequests: true,
 		validateResponses: true,
+		format: 'yaml_jsdoc',
+		yaml_jsdoc: {
+			swaggerDefinition: {
+				openapi: '3.0.0',
+				info: {
+					version: '1.0.0',
+					title: 'Swagger Petstore',
+					description: 'A sample API that uses a petstore as an example to demonstrate features in the OpenAPI 3.0 specification',
+					termsOfService: 'http://swagger.io/terms/',
+					contact: {
+						name: 'Swagger API Team',
+						email: 'apiteam@swagger.io',
+						url: 'http://swagger.io',
+					},
+					license: {
+						name: 'Apache 2.0',
+						url: 'https://www.apache.org/licenses/LICENSE-2.0.html',
+					},
+				},
+			},
+			apis: [
+				'./test/yaml_jsdoc/fake-server.js',
+				'./test/yaml_jsdoc/components.js',
+			],
+		},
 	});
 
 	/**
@@ -99,29 +121,30 @@ const runServer = async () => {
 	/**
 	 * @swagger
 	 *
-	 * post:
-	 *   description: Creates a new pet in the store. Duplicates are allowed
-	 *   operationId: addPet
-	 *   requestBody:
-	 *     description: Pet to add to the store
-	 *     required: true
-	 *     content:
-	 *       application/json:
-	 *         schema:
-	 *           $ref: '#/components/schemas/NewPet'
-	 *   responses:
-	 *     '200':
-	 *       description: pet response
+	 * /pets:
+	 *   post:
+	 *     description: Creates a new pet in the store. Duplicates are allowed
+	 *     operationId: addPet
+	 *     requestBody:
+	 *       description: Pet to add to the store
+	 *       required: true
 	 *       content:
 	 *         application/json:
 	 *           schema:
-	 *             $ref: '#/components/schemas/Pet'
-	 *     default:
-	 *       description: unexpected error
-	 *       content:
-	 *         application/json:
-	 *           schema:
-	 *             $ref: '#/components/schemas/Error'
+	 *             $ref: '#/components/schemas/NewPet'
+	 *     responses:
+	 *       '200':
+	 *         description: pet response
+	 *         content:
+	 *           application/json:
+	 *             schema:
+	 *               $ref: '#/components/schemas/Pet'
+	 *       default:
+	 *         description: unexpected error
+	 *         content:
+	 *           application/json:
+	 *             schema:
+	 *               $ref: '#/components/schemas/Error'
 	 */
 	app.post(
 		'/pets',

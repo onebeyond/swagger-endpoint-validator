@@ -1,4 +1,4 @@
-describe('unit tests', () => {
+describe.skip('unit tests', () => {
 	describe('sample', () => {
 		it('should test that true === true', () => {
 			expect(true).toBe(true);

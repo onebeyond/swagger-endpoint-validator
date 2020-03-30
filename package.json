@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/guidesmiths/swagger-endpoint-validator#readme",
   "dependencies": {
+    "api-spec-converter": "^2.11.0",
     "debug": "^4.1.1",
     "express-openapi-validator": "^3.10.0",
     "express-swagger-generator": "^1.1.17",

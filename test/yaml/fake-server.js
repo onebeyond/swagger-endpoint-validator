@@ -27,12 +27,13 @@ const runServer = async () => {
 	app.use(bodyParser.json());
 
 	await validator.init(app, {
-		yaml: {
-			file: './test/yaml/api.yaml',
-		},
 		validationEndpoint: '/test',
 		validateRequests: true,
 		validateResponses: true,
+		format: 'yaml',
+		yaml: {
+			file: './test/yaml/api.yaml',
+		},
 	});
 
 	app.get(
