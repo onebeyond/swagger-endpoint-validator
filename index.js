@@ -19,7 +19,9 @@ const SwaggerValidatorError = errorFactory('swagger_validator');
  * @param {string} [options.validationEndpoint=null] - endpoint to do schemas validation agains the OpenAPI schema.
  * @param {string} options.format - format of the OpenAPI specification documentation.
  * @param {Object} [options.yaml={}] - Extra configuration when format = 'yaml'.
- * @param {Object} [options.yaml.file=null] - path of the yaml file containing the OpenAPI specification.
+ * @param {string} [options.yaml.file=null] - path of the yaml file containing the OpenAPI specification.
+ * @param {Object} [options.yaml_jsdoc={}] - Extra configuration when format = 'yaml_jsdoc'.
+ * @param {Object} [options.jsdoc={}] - Extra configuration when format = 'jsdoc'.
  */
 const init = async (app, options) => {
 	debug('Initializing middleware for this express app...');
