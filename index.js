@@ -16,6 +16,7 @@ const SwaggerValidatorError = errorFactory('swagger_validator');
  * @param {Object} options - Configuration object.
  * @param {boolean} [options.validateRequests=true] - true to validate the requests.
  * @param {boolean} [options.validateResponses=true] - true to validate the responses.
+ * @param {string|boolean} [options.validateFormats='fast'] - specifies the strictness of validation of string formats (one of 'fast', 'full' or false).
  * @param {string} [options.validationEndpoint=null] - endpoint to do schemas validation agains the OpenAPI schema.
  * @param {string} options.format - format of the OpenAPI specification documentation.
  * @param {Object} [options.yaml={}] - Extra configuration when format = 'yaml'.
