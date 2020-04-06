@@ -35,7 +35,6 @@
     "js-yaml": "^3.13.1",
     "openapi-enforcer": "^1.10.1",
     "swagger-jsdoc": "^4.0.0",
-    "swagger-model-validator": "^3.0.18",
     "swagger-ui-express": "^4.1.4",
     "swagger2openapi": "^6.0.2"
   },
