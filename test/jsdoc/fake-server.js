@@ -102,6 +102,4 @@ const runServer = async () => {
 	return app;
 };
 
-module.exports = {
-	runServer,
-};
+module.exports = runServer;

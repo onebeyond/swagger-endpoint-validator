@@ -1,6 +1,6 @@
 const request = require('supertest');
 
-const { runServer } = require('./fake-server');
+const runServer = require('./fake-server');
 
 let app;
 
