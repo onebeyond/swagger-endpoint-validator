@@ -30,6 +30,7 @@ const runServer = async () => {
 		validationEndpoint: '/test',
 		validateRequests: true,
 		validateResponses: true,
+		apiDocEndpoint: '/docs',
 		format: 'jsdoc',
 		jsdoc: {
 			swaggerDefinition: {
@@ -102,6 +103,4 @@ const runServer = async () => {
 	return app;
 };
 
-module.exports = {
-	runServer,
-};
+module.exports = runServer;
