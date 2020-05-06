@@ -30,6 +30,7 @@ const runServer = async () => {
 		validationEndpoint: '/test',
 		validateRequests: true,
 		validateResponses: true,
+		apiDocEndpoint: '/docs',
 		format: 'yaml',
 		yaml: {
 			file: './test/yaml/api.yaml',

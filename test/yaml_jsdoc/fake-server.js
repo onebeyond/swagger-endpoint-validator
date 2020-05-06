@@ -30,6 +30,7 @@ const runServer = async () => {
 		validationEndpoint: '/test',
 		validateRequests: true,
 		validateResponses: true,
+		apiDocEndpoint: '/docs',
 		format: 'yaml_jsdoc',
 		yaml_jsdoc: {
 			swaggerDefinition: {
