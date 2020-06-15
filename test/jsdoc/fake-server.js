@@ -33,40 +33,59 @@ const runServer = async () => {
 		apiDocEndpoint: '/docs',
 		format: 'jsdoc',
 		jsdoc: {
-			swaggerDefinition: {
-				info: {
-					version: '1.0.0',
-					title: 'Swagger Petstore',
-					description: 'A sample API that uses a petstore as an example to demonstrate features in the OpenAPI 3.0 specification',
-					termsOfService: 'http://swagger.io/terms/',
-					contact: {
-						name: 'Swagger API Team',
-						email: 'apiteam@swagger.io',
-						url: 'http://swagger.io',
-					},
-					license: {
-						name: 'Apache 2.0',
-						url: 'https://www.apache.org/licenses/LICENSE-2.0.html',
-					},
+			info: {
+				description: 'Documentation for API',
+				title: 'API Title',
+				version: '1.0.0',
+				license: {
+					name: 'MIT',
+				},
+				contact: {
+					name: 'Author',
+					email: 'email@email.com',
 				},
 			},
-			basedir: process.cwd(),
-			files: [
-				'./test/jsdoc/fake-server.js',
-				'./test/jsdoc/components.js',
-			],
+			servers: [],
+			security: {
+				JWT: {
+					type: 'apiKey',
+					in: 'header',
+					name: 'Authorization',
+				},
+			},
+			baseDir: __dirname,
+			swaggerUIPath: '/docs/api',
+			filesPattern: './fake-server.js',
 		},
 	});
 
 	/**
-	 * @route GET /pets
+	 * @typedef {object} Pet
+	 * @property {integer} id.required
+	 * @property {string} name.required
+	 * @property {string} tag
+	 */
+
+	/**
+	 * @typedef {object} NewPet
+	 * @property {string} name.required
+	 * @property {string} tag
+	 */
+
+	/**
+	 * @typedef {object} Error
+	 * @property {integer} code.required
+	 * @property {string} message.required
+	 */
+
+
+	/**
+	 * GET /pets
 	 * @summary Returns all pets from the system that the user has access to
-	 * @param {[string]} tags.query - tags to filter by
 	 * @param {integer} limit.query - maximum number of results to return
 	 * @param {boolean} wrong.query - flag to force the server to return invalid response
-	 * @produces application/json
-	 * @returns {Array.<Pet>} 200 - pet response
-	 * @returns {Error.model} default - unexpected error
+	 * @return {array<Pet>} 200 - pet response
+	 * @return {Error} default - unexpected error
 	 */
 	app.get(
 		'/pets',
@@ -81,12 +100,11 @@ const runServer = async () => {
 	);
 
 	/**
-	 * @route POST /pets
+	 * POST /pets
 	 * @summary Creates a new pet in the store. Duplicates are allowed
-	 * @param {NewPet.model} body.body.required - Pet to add to the store
-	 * @produces application/json
-	 * @returns {Pet.model} 200 - pet response
-	 * @returns {Error.model} default - unexpected error
+	 * @param {NewPet} request.body.required - Pet to add to the store
+	 * @return {Pet} 200 - pet response
+	 * @return {Error} default - unexpected error
 	 */
 	app.post(
 		'/pets',

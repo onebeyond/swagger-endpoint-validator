@@ -28,6 +28,7 @@ describe('validation results', () => {
 			const res = await request(app)
 				.post('/pets')
 				.send({ name: 'my new pet' });
+
 			expect(res.statusCode)
 				.toEqual(200);
 		});
@@ -43,7 +44,7 @@ describe('validation results', () => {
 				.toEqual('Unknown query parameter \'invalidQueryParam\'');
 		});
 
-		// TODO: it's not possible to do query params values validation with JSDoc
+		// TODO: it's not possible to do query params minimum and maximum values validation with JSDoc
 		test.skip('should return a bad request error (400) when GET request query params are not valid', async () => {
 			const res = await request(app)
 				.get('/pets?limit=0');
@@ -51,6 +52,15 @@ describe('validation results', () => {
 				.toEqual(400);
 			expect(res.body.message)
 				.toEqual('request.query.limit should be >= 1');
+		});
+
+		test('should return a bad request error (400) when GET request query param type is not valid', async () => {
+			const res = await request(app)
+				.get('/pets?limit=string');
+			expect(res.statusCode)
+				.toEqual(400);
+			expect(res.body.message)
+				.toEqual('request.query.limit should be integer');
 		});
 
 		test('should return a bad request error (400) when POST request body is not valid', async () => {
