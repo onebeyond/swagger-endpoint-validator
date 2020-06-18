@@ -30,13 +30,12 @@
   "homepage": "https://github.com/guidesmiths/swagger-endpoint-validator#readme",
   "dependencies": {
     "debug": "^4.1.1",
+    "express-jsdoc-swagger": "^1.0.3",
     "express-openapi-validator": "^3.12.7",
-    "express-swagger-generator": "^1.1.17",
     "js-yaml": "^3.13.1",
     "openapi-enforcer": "^1.10.3",
     "swagger-jsdoc": "^4.0.0",
-    "swagger-ui-express": "^4.1.4",
-    "swagger2openapi": "^6.0.3"
+    "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
     "body-parser": "^1.19.0",
