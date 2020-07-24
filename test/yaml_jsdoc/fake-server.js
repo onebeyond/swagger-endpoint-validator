@@ -28,8 +28,6 @@ const runServer = async () => {
 
 	await validator.init(app, {
 		validationEndpoint: '/test',
-		validateRequests: true,
-		validateResponses: true,
 		apiDocEndpoint: '/docs',
 		format: 'yaml_jsdoc',
 		yaml_jsdoc: {
