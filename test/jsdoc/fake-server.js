@@ -76,7 +76,6 @@ const runServer = async () => {
 	 * @property {string} message.required
 	 */
 
-
 	/**
 	 * GET /pets
 	 * @summary Returns all pets from the system that the user has access to
