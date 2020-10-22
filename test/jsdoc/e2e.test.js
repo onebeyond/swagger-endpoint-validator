@@ -40,7 +40,9 @@ describe('validation results', () => {
 				.get('/pets?invalidQueryParam=1');
 			expect(res.statusCode)
 				.toEqual(400);
-			expect(res.body.message)
+			expect(res.body.errors[0].path)
+				.toEqual('.query.invalidQueryParam');
+			expect(res.body.errors[0].message)
 				.toEqual('Unknown query parameter \'invalidQueryParam\'');
 		});
 
@@ -50,8 +52,10 @@ describe('validation results', () => {
 				.get('/pets?limit=0');
 			expect(res.statusCode)
 				.toEqual(400);
-			expect(res.body.message)
-				.toEqual('request.query.limit should be >= 1');
+			expect(res.body.errors[0].path)
+				.toEqual('.query.limit');
+			expect(res.body.errors[0].message)
+				.toEqual('should be >= 1');
 		});
 
 		test('should return a bad request error (400) when GET request query param type is not valid', async () => {
@@ -59,18 +63,20 @@ describe('validation results', () => {
 				.get('/pets?limit=string');
 			expect(res.statusCode)
 				.toEqual(400);
-			expect(res.body.message)
-				.toEqual('request.query.limit should be integer');
+			expect(res.body.errors[0].path)
+				.toEqual('.query.limit');
+			expect(res.body.errors[0].message)
+				.toEqual('should be integer');
 		});
 
 		test('should return a bad request error (400) when POST request body is not valid', async () => {
 			const res = await request(app)
 				.post('/pets')
 				.send({});
-			expect(res.statusCode)
-				.toEqual(400);
-			expect(res.body.message)
-				.toEqual('request.body should have required property \'name\'');
+			expect(res.body.errors[0].path)
+				.toEqual('.body.name');
+			expect(res.body.errors[0].message)
+				.toEqual('should have required property \'name\'');
 		});
 	});
 

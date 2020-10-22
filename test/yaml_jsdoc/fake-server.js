@@ -131,6 +131,13 @@ const runServer = async () => {
 	 *         application/json:
 	 *           schema:
 	 *             $ref: '#/components/schemas/NewPet'
+	 *     parameters:
+	 *       - name: wrong
+	 *         in: query
+	 *         description: flag to force the server to return invalid response
+	 *         required: false
+	 *         schema:
+	 *           type: boolean
 	 *     responses:
 	 *       '200':
 	 *         description: pet response

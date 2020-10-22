@@ -60,6 +60,13 @@ paths:
     post:
       description: Creates a new pet in the store. Duplicates are allowed
       operationId: addPet
+      parameters:
+        - name: wrong
+          in: query
+          description: flag to force the server to return invalid response
+          required: false
+          schema:
+            type: boolean
       requestBody:
         description: Pet to add to the store
         required: true
