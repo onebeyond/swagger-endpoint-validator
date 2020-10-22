@@ -99,6 +99,7 @@ const runServer = async () => {
 	/**
 	 * POST /pets
 	 * @summary Creates a new pet in the store. Duplicates are allowed
+	 * @param {boolean} wrong.query - flag to force the server to return invalid response
 	 * @param {NewPet} request.body.required - Pet to add to the store
 	 * @return {Pet} 200 - pet response
 	 * @return {Error} default - unexpected error
