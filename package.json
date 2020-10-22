@@ -1,6 +1,6 @@
 {
   "name": "swagger-endpoint-validator",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A validator of API endpoints to check that input and output match with the swagger specification for the API",
   "main": "index.js",
   "scripts": {
@@ -30,7 +30,7 @@
   "homepage": "https://github.com/guidesmiths/swagger-endpoint-validator#readme",
   "dependencies": {
     "debug": "^4.1.1",
-    "express-jsdoc-swagger": "^1.0.4",
+    "express-jsdoc-swagger": "^1.1.0",
     "express-openapi-validator": "^3.12.7",
     "js-yaml": "^3.14.0",
     "openapi-enforcer": "^1.10.3",
