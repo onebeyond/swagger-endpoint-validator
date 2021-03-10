@@ -17,7 +17,16 @@
     "enpoint",
     "validator"
   ],
-  "author": "Kevin Martinez (kevin.martinez@guidesmiths.com)",
+  "contributors": [
+    {
+      "name": "Kevin Martinez",
+      "email": "kevin.martinez@guidesmiths.com"
+    },
+    {
+      "name": "Íñigo Marquínez Prado",
+      "email": "inigo.marquinez@guidesmiths.com"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/guidesmiths/swagger-endpoint-validator/issues"
