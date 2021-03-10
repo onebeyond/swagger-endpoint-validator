@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 
 const config = require('./config.json');
 const validator = require('../..');
@@ -24,8 +23,8 @@ const wrongPets = [
 
 const runServer = async () => {
 	const app = express();
-	app.use(bodyParser.urlencoded({ extended: true }));
-	app.use(bodyParser.json());
+	app.use(express.urlencoded({ extended: true }));
+	app.use(express.json());
 
 	await validator.init(app, config);
 
