@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const config = require('./config.json');
 const validator = require('../..');
 
 const pets = [
@@ -26,14 +27,7 @@ const runServer = async () => {
 	app.use(bodyParser.urlencoded({ extended: true }));
 	app.use(bodyParser.json());
 
-	await validator.init(app, {
-		validationEndpoint: '/test',
-		apiDocEndpoint: '/docs',
-		format: 'yaml',
-		yaml: {
-			file: './test/yaml/api.yaml',
-		},
-	});
+	await validator.init(app, config);
 
 	app.get(
 		'/pets',

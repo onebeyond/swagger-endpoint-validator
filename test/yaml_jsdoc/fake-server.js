@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const config = require('./config.json');
 const validator = require('../..');
 
 const pets = [
@@ -26,35 +27,7 @@ const runServer = async () => {
 	app.use(bodyParser.urlencoded({ extended: true }));
 	app.use(bodyParser.json());
 
-	await validator.init(app, {
-		validationEndpoint: '/test',
-		apiDocEndpoint: '/docs',
-		format: 'yaml_jsdoc',
-		yaml_jsdoc: {
-			swaggerDefinition: {
-				openapi: '3.0.0',
-				info: {
-					version: '1.0.0',
-					title: 'Swagger Petstore',
-					description: 'A sample API that uses a petstore as an example to demonstrate features in the OpenAPI 3.0 specification',
-					termsOfService: 'http://swagger.io/terms/',
-					contact: {
-						name: 'Swagger API Team',
-						email: 'apiteam@swagger.io',
-						url: 'http://swagger.io',
-					},
-					license: {
-						name: 'Apache 2.0',
-						url: 'https://www.apache.org/licenses/LICENSE-2.0.html',
-					},
-				},
-			},
-			apis: [
-				'./test/yaml_jsdoc/fake-server.js',
-				'./test/yaml_jsdoc/components.js',
-			],
-		},
-	});
+	await validator.init(app, config);
 
 	/**
 	 * @swagger

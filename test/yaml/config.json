@@ -1,0 +1,8 @@
+{
+  "validationEndpoint": "/test",
+  "apiDocEndpoint": "/docs",
+  "format": "yaml",
+  "yaml": {
+    "file": "./test/yaml/api.yaml"
+  }
+}
