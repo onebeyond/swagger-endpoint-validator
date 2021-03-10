@@ -23,7 +23,7 @@ const wrongPets = [
 
 const runServer = async () => {
 	const app = express();
-	app.use(express.urlencoded({ extended: true }));
+	app.use(express.urlencoded());
 	app.use(express.json());
 
 	await validator.init(app, config(__dirname));
