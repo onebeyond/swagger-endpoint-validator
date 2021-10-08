@@ -1,3 +1,5 @@
+[![CI](https://github.com/guidesmiths/swagger-endpoint-validator/actions/workflows/ci.yml/badge.svg)](https://github.com/guidesmiths/swagger-endpoint-validator/actions/workflows/ci.yml)
+[![CD](https://github.com/guidesmiths/swagger-endpoint-validator/actions/workflows/cd.yml/badge.svg)](https://github.com/guidesmiths/swagger-endpoint-validator/actions/workflows/cd.yml)
 
 # swagger-endpoint-validator
 
