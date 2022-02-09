@@ -33,7 +33,7 @@
     "express-jsdoc-swagger": "^1.1.0",
     "express-openapi-validator": "^4.2.3",
     "js-yaml": "^3.14.0",
-    "openapi-enforcer": "^1.11.1",
+    "openapi-enforcer": "^1.12.5",
     "swagger-jsdoc": "^4.3.1",
     "swagger-ui-express": "^4.1.4"
   },
