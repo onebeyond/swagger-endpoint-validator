@@ -22,28 +22,37 @@
     "enpoint",
     "validator"
   ],
-  "author": "Kevin Martinez (kevin.martinez@guidesmiths.com)",
+  "contributors": [
+    {
+      "name" : "Kevin Martinez",
+      "email" : "kevin.martinez@dcsl.com"
+    },
+    {
+      "name" : "Íñigo Marquínez Prado",
+      "email" : "inigo.marquinez@dcsl.com"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/guidesmiths/swagger-endpoint-validator/issues"
   },
   "homepage": "https://github.com/guidesmiths/swagger-endpoint-validator#readme",
   "dependencies": {
-    "debug": "^4.2.0",
-    "express-jsdoc-swagger": "^1.1.0",
-    "express-openapi-validator": "^4.2.3",
+    "debug": "^4.3.3",
+    "express-jsdoc-swagger": "^1.6.7",
+    "express-openapi-validator": "^4.13.5",
     "js-yaml": "^3.14.0",
-    "openapi-enforcer": "^1.11.1",
+    "openapi-enforcer": "^1.17.0",
     "swagger-jsdoc": "^4.3.1",
-    "swagger-ui-express": "^4.1.4"
+    "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.19.2",
     "eslint": "^7.11.0",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^24.1.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "husky": "^4.3.0",
     "jest": "^26.6.0",
     "jest-junit": "^12.0.0",
