@@ -38,7 +38,7 @@
     "express-openapi-validator": "^4.13.5",
     "js-yaml": "^4.1.0",
     "openapi-enforcer": "^1.17.0",
-    "swagger-jsdoc": "^4.3.1",
+    "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
