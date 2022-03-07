@@ -1,12 +1,13 @@
 {
   "name": "swagger-endpoint-validator",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A validator of API endpoints to check that input and output match with the swagger specification for the API",
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose",
     "lint": "eslint .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -19,12 +20,12 @@
   ],
   "contributors": [
     {
-      "name" : "Kevin Martinez",
-      "email" : "kevin.martinez@dcsl.com"
+      "name": "Kevin Martinez",
+      "email": "kevin.martinez@dcsl.com"
     },
     {
-      "name" : "Íñigo Marquínez Prado",
-      "email" : "inigo.marquinez@dcsl.com"
+      "name": "Íñigo Marquínez Prado",
+      "email": "inigo.marquinez@dcsl.com"
     }
   ],
   "license": "ISC",
@@ -51,6 +52,7 @@
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "jest-junit": "^13.0.0",
+    "standard-version": "^9.3.2",
     "supertest": "^6.2.2"
   },
   "jest-junit": {
