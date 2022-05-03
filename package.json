@@ -34,26 +34,26 @@
   },
   "homepage": "https://github.com/guidesmiths/swagger-endpoint-validator#readme",
   "dependencies": {
-    "debug": "^4.3.3",
+    "debug": "^4.3.4",
     "express-jsdoc-swagger": "^1.6.7",
-    "express-openapi-validator": "^4.13.5",
+    "express-openapi-validator": "^4.13.7",
     "js-yaml": "^4.1.0",
-    "openapi-enforcer": "^1.17.0",
-    "swagger-jsdoc": "^6.1.0",
+    "openapi-enforcer": "^1.19.0",
+    "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
-    "body-parser": "^1.19.2",
-    "eslint": "^8.10.0",
+    "body-parser": "^1.20.0",
+    "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^26.1.1",
-    "express": "^4.17.3",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.1.5",
+    "express": "^4.18.1",
     "husky": "^7.0.4",
-    "jest": "^27.5.1",
-    "jest-junit": "^13.0.0",
+    "jest": "^28.0.3",
+    "jest-junit": "^13.2.0",
     "standard-version": "^9.3.2",
-    "supertest": "^6.2.2"
+    "supertest": "^6.2.3"
   },
   "jest-junit": {
     "outputName": "test-results/jest/results.xml"
