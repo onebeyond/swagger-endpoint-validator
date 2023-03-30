@@ -53,6 +53,21 @@
         "review",
         "test"
       ]
+    },
+    {
+      "login": "UlisesGascon",
+      "name": "Ulises Gascón",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5110813?v=4",
+      "profile": "https://ulisesgascon.com/",
+      "contributions": [
+        "bug",
+        "code",
+        "doc",
+        "ideas",
+        "maintenance",
+        "review",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
