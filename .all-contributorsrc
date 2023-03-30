@@ -1,0 +1,31 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "UlisesGascon",
+      "name": "Ulises Gascón",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5110813?v=4",
+      "profile": "https://ulisesgascon.com/",
+      "contributions": [
+        "bug",
+        "code",
+        "doc",
+        "ideas",
+        "maintenance",
+        "review",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "swagger-endpoint-validator",
+  "projectOwner": "onebeyond"
+}
