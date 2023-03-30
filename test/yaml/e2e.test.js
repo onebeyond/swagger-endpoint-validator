@@ -40,7 +40,7 @@ describe('validation results', () => {
 			expect(res.statusCode)
 				.toEqual(400);
 			expect(res.body.errors[0].path)
-				.toEqual('.query.invalidQueryParam');
+				.toEqual('/query/invalidQueryParam');
 			expect(res.body.errors[0].message)
 				.toEqual('Unknown query parameter \'invalidQueryParam\'');
 		});
@@ -51,9 +51,9 @@ describe('validation results', () => {
 			expect(res.statusCode)
 				.toEqual(400);
 			expect(res.body.errors[0].path)
-				.toEqual('.query.limit');
+				.toEqual('/query/limit');
 			expect(res.body.errors[0].message)
-				.toEqual('should be >= 1');
+				.toEqual('must be >= 1');
 		});
 
 		test('should return a bad request error (400) when POST request body is not valid', async () => {
@@ -63,9 +63,9 @@ describe('validation results', () => {
 			expect(res.statusCode)
 				.toEqual(400);
 			expect(res.body.errors[0].path)
-				.toEqual('.body.name');
+				.toEqual('/body/name');
 			expect(res.body.errors[0].message)
-				.toEqual('should have required property \'name\'');
+				.toEqual('must have required property \'name\'');
 		});
 	});
 
@@ -78,7 +78,7 @@ describe('validation results', () => {
 			expect(res.error.status)
 				.toEqual(500);
 			expect(res.error.text)
-				.toContain('Error: .response[0] should have required property &#39;name&#39;');
+				.toContain('Error: /response/0 must have required property &#39;name&#39;');
 		});
 
 		test('should return a server error (500) when POST response is not valid', async () => {
@@ -90,7 +90,7 @@ describe('validation results', () => {
 			expect(res.error.status)
 				.toEqual(500);
 			expect(res.error.text)
-				.toContain('Error: .response should have required property &#39;id&#39;');
+				.toContain('Error: /response must have required property &#39;id&#39;');
 		});
 	});
 });
