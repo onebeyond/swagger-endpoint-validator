@@ -57,5 +57,9 @@
   },
   "jest-junit": {
     "outputName": "test-results/jest/results.xml"
+  },
+  "engines": {
+    "node": ">=12",
+    "npm": ">=8"
   }
 }
