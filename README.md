@@ -20,7 +20,7 @@ npm install --save swagger-endpoint-validator
 ### init(app: ExpressApp, options: ConfigFile)
 
 ```js
-validator.init(app, options);
+await validator.init(app, options);
 ```
 
 where:
