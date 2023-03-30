@@ -1,6 +1,6 @@
 {
   "name": "swagger-endpoint-validator",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "A validator of API endpoints to check that input and output match with the swagger specification for the API",
   "main": "index.js",
   "scripts": {
