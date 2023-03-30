@@ -19,6 +19,16 @@
         "review",
         "test"
       ]
+    },
+    {
+      "login": "LonelyPrincess",
+      "name": "Sara Hernández",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17673317?v=4",
+      "profile": "https://github.com/LonelyPrincess",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
