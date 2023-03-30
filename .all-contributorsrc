@@ -29,6 +29,21 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "inigomarquinez",
+      "name": "Íñigo Marquínez Prado",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25435858?v=4",
+      "profile": "https://github.com/inigomarquinez",
+      "contributions": [
+        "bug",
+        "code",
+        "doc",
+        "ideas",
+        "maintenance",
+        "review",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
