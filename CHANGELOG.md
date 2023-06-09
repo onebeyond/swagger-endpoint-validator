@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/guidesmiths/swagger-endpoint-validator/compare/v4.0.0...v4.1.0) (2023-06-09)
+
 ## [4.0.0](https://github.com/guidesmiths/swagger-endpoint-validator/compare/v3.0.2...v4.0.0) (2023-03-30)
 
 
