@@ -68,6 +68,16 @@
         "review",
         "test"
       ]
+    },
+    {
+      "login": "neodmy",
+      "name": "David Miguel Yusta",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36865163?v=4",
+      "profile": "https://github.com/neodmy",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -75,5 +85,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "projectName": "swagger-endpoint-validator",
-  "projectOwner": "onebeyond"
+  "projectOwner": "onebeyond",
+  "commitType": "docs"
 }
