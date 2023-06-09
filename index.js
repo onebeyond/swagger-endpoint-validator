@@ -22,6 +22,7 @@ const SwaggerValidatorError = errorFactory('swagger_validator');
  * @param {Object} [options.jsdoc={}] - Extra configuration when format = 'jsdoc'.
  * @param {string} [options.validationEndpoint=null] - endpoint to do schemas validation agains the OpenAPI schema.
  * @param {string} [options.apiDocEndpoint=null] - endpoint to show UI based API documentation.
+ * @param {boolean} [options.propagateError=false] - Determines whether the internal Express error handler responds immediately or passes the validation error to the next error handler
  * @param {*} [options.validateRequests=true] - Determines whether the validator should validate requests.
  * @param {*} [options.validateResponses=true] - Determines whether the validator should validate responses. Also accepts response validation options.
  * @param {*} [options.validateSecurity=true] -Determines whether the validator should validate securities e.g. apikey, basic, oauth2, openid, etc
@@ -51,7 +52,7 @@ const init = async (app, options) => {
 	validationEndpoint.add(app, normalizedOptions);
 
 	await validator.init(app, normalizedOptions, spec);
-	customErrorHandler.add(app);
+	customErrorHandler.add(app, normalizedOptions);
 
 	debug('Middleware initialized!');
 };
