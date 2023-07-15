@@ -3,6 +3,8 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![CI](https://github.com/guidesmiths/swagger-endpoint-validator/actions/workflows/ci.yml/badge.svg)](https://github.com/guidesmiths/swagger-endpoint-validator/actions/workflows/ci.yml)
 [![CD](https://github.com/guidesmiths/swagger-endpoint-validator/actions/workflows/cd.yml/badge.svg)](https://github.com/guidesmiths/swagger-endpoint-validator/actions/workflows/cd.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/08258af73b9f938e544a/maintainability)](https://codeclimate.com/github/onebeyond/swagger-endpoint-validator/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/08258af73b9f938e544a/test_coverage)](https://codeclimate.com/github/onebeyond/swagger-endpoint-validator/test_coverage)
 
 # swagger-endpoint-validator
 
